@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from user_administration.utils import get_from_env
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p_clgg=0mfog3mw0z-ot6t2-4(*=&uqedq(t@8mi#rdva+__il'
+SECRET_KEY = get_from_env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,8 +77,12 @@ WSGI_APPLICATION = 'user_administration.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': get_from_env('POSTGRES_DB'),
+        'USER': get_from_env('POSTGRES_USER'),
+        'PASSWORD': get_from_env('POSTGRES_PASSWORD'),
+        'HOST': get_from_env('POSTGRES_HOST'),
+        'PORT': '5432',
     }
 }
 
