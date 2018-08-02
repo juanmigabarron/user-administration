@@ -14,9 +14,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000 
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - '.:/code'
     ports:
-      - "80:8000"
+      - "8000:8000"
     environment:
       - SECRET_KEY=pGclgg90mfog3mw0zHot6t2XSp08Yuqedq2t48mibrdvamj7il
       - POSTGRES_USER=user_admin
