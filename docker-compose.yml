@@ -25,6 +25,10 @@ services:
       - POSTGRES_PASSWORD=123456789
       - POSTGRES_DB=administration
       - POSTGRES_HOST=db
+      - GOOGLE_OAUTH_CLIENT_ID=1011921308676-083akj9o1kedln7rnblfan7af0j6rhnq.apps.googleusercontent.com
+      - GOOGLE_OAUTH_CLIENT_SECRECT=IX-rVo9QRaqnfrdjKnZl-eeu
+    depends_on:
+      - db
     restart: on-failure
 
 volumes:

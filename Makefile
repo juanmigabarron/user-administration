@@ -15,7 +15,7 @@ migrate:
 	${DC} run --rm --entrypoint "python manage.py" app migrate --noinput
 
 .PHONY: server
-server:
+server: migrate
 	${DC} up -d
 
 .PHONY: shell
