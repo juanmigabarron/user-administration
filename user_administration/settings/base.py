@@ -41,7 +41,9 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-EXTERNAL_APPS = []
+EXTERNAL_APPS = [
+    'social_django'
+]
 
 PROJECT_APPS = [
     'administration'
