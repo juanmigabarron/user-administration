@@ -37,3 +37,11 @@ log:
 .PHONY: bash
 bash:
 	${DC} run --rm app bash
+
+.PHONY: isort
+isort:
+	${DC} run --rm --no-deps --entrypoint "/bin/bash -c" app "isort --diff --check-only --quiet"
+
+.PHONY: pylint
+pylint: isort
+	${DC} run --rm --no-deps --entrypoint "/bin/bash -c" app "touch __init__.py; pylint /code; rm __init__.py"
