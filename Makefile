@@ -10,13 +10,18 @@ install: ##@development Installs requirements. You can use pipenv shell to activ
 build: ##@development Builds docker image. Needed only after changes in requierements.
 	${DC} build
 
+.PHONY: _db
+_db: ##@development Starts database service and wait until this service is available.
+	${DC} up -d db
+	sleep 2
+
 .PHONY: migrate
 migrate: ##@development Applies migration on your database.
 	${DC} run --rm --entrypoint "python manage.py" app migrate --noinput
 
 .PHONY: server
 server: ##@development Runs the Administration app in http://localhost:8000/ .
-server: migrate
+server: _db migrate
 	${DC} up -d
 
 .PHONY: shell
@@ -48,6 +53,10 @@ pylint: ##@linting Runs pylint to analyse all the application code.
 pylint: isort
 	${DC} run --rm --no-deps --entrypoint "/bin/bash -c" app "touch __init__.py; pylint /code; rm __init__.py"
 
+.PHONY: test
+test: ##@test Runs all the tests of the application.
+test: _db
+	${DC} run --rm --entrypoint "/bin/bash -c" app "pytest"
 
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
