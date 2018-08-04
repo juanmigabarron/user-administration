@@ -1,9 +1,7 @@
 # User Administration
-
 This app allows you to manage users and their IBAN, you will login as a Administrator of users, you only can edit/delete users that you created. 
 
-## Setup
-
+## Setup
 This is a docker based application, so you will need docker installed in your machine.
 
 To install it you can go to the official documentation: [here](https://docs.docker.com/install/)
@@ -17,7 +15,6 @@ You can see all the availables commands with:
     make help
 
 ## Linting
-
 We lint the application with isort and pylint, just run the following command:
     
     make pylint
