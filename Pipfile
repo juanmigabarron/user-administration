@@ -10,6 +10,7 @@ social-auth-app-django = "*"
 
 [dev-packages]
 pylint = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.7"

@@ -8,8 +8,10 @@ Dockerfile
 README.md
 env.*
 /devops/*
-.vscode
+.vscode/*
 .yml
+.pylint.d/*
+pytest.ini
 
 **/*.pyc
 **/__pycache__
