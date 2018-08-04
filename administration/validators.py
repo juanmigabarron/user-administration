@@ -40,6 +40,6 @@ def validate_iban(value):
     """ Checks the country length and if the translated iban mod 97 is 1, otherwise raise an error """
     if not _country_length(value) or int(_translate_iban(value)) % 97 != 1:
         raise ValidationError(
-                _(f'{value} is not a valid IBAN'),
-                params={'value': value},
-            )
+            _(f'{value} is not a valid IBAN'),
+            params={'value': value},
+        )
