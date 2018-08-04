@@ -108,3 +108,6 @@ venv.bak/
 
 # bash
 .bash_history
+
+# pylint
+.pylint.d/
