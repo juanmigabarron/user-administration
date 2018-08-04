@@ -14,7 +14,7 @@ class UserModelAdmin(admin.ModelAdmin):
         if obj and request.user == obj.created_by:
             permission = True
         return permission
-    
+
     def has_delete_permission(self, request, obj=None):
         permission = False
         if obj and request.user == obj.created_by:
