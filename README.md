@@ -10,6 +10,8 @@ Once, you have docker installed, you can just run:
 
     make server
 
+To see this application, go to http://localhost:8000
+
 You can see all the availables commands with:
 
     make help
